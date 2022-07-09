@@ -56,3 +56,10 @@
 .Navbar > div button:nth-child(2) svg path {
   fill: var(--secondary-bg);
 }
+
+.show {
+  opacity: 1;
+}
+.hide {
+  opacity: 0;
+}

@@ -23,6 +23,7 @@ export default function HomePage() {
 
     if (checked && !completed.includes(id)) {
       setCompleted((prev) => [...prev, id]);
+      setCheckboxToClear(true);
     } else if (!checked && completed.includes(id)) {
       setCompleted((prev) => prev.filter((item) => item !== id));
 
@@ -45,7 +46,6 @@ export default function HomePage() {
   const handleDelete = async () => {
     if (!completed.length) return;
 
-    console.log(completed);
     try {
       await DELETE("/shopping-list/item", {
         items_ids: completed,
@@ -53,6 +53,7 @@ export default function HomePage() {
     } catch {
     } finally {
       shoppingList.refetch();
+      setCheckboxToClear(false);
     }
   };
 

@@ -12,7 +12,10 @@ export default function BottomNavbar({
   return (
     <div className={styles.Navbar}>
       <div>
-        <button onClick={onDelete}>
+        <button
+          onClick={onDelete}
+          className={checked ? styles.show : styles.hide}
+        >
           <FiTrash2 />
         </button>
         <button onClick={openForm}>
