@@ -1,0 +1,103 @@
+.Form {
+  position: fixed;
+  z-index: 20;
+
+  width: 100vw;
+  height: 220px;
+  left: 0;
+
+  transition: 0.2s;
+
+  background: var(--secondary-bg);
+}
+
+.Form.closed {
+  bottom: -220px;
+}
+.Form.open {
+  bottom: 0;
+}
+
+.Form > div {
+  position: relative;
+
+  height: 100%;
+  width: calc(100vw - (var(--page-padding) * 2));
+  margin-left: var(--page-padding);
+
+  padding-block: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.Form > div input {
+  width: 100%;
+  height: 40px;
+
+  color: var(--primary-bg);
+  font-size: 20px;
+  text-indent: 10px;
+
+  border-radius: 5px;
+
+  border: 0;
+  outline: 0;
+
+  box-shadow: 0 0 2px var(--primary);
+}
+.Form > div input:focus {
+  box-shadow: 0 0 5px var(--primary);
+}
+
+.Form .Btns {
+  width: 100%;
+  display: flex;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.Form .Btns button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  height: 40px;
+}
+.Form .Btns button:first-child {
+  flex: 1;
+  background: var(--danger);
+}
+.Form .Btns button:last-child {
+  flex: 4;
+  background: var(--primary);
+}
+
+.Form > div .Tags {
+  display: flex;
+  gap: 20px;
+}
+.Form > div .Tags span {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  background-color: var(--medium);
+  cursor: pointer;
+}
+.Form > div .Tags span.active {
+  box-shadow: 0px 0px 0px 2px var(--primary-bg), 0px 0px 0px 4px var(--medium);
+}
+
+.Form > div .Tags span:first-child {
+  background-color: var(--success);
+}
+.Form > div .Tags span:first-child:hover,
+.Form > div .Tags span.active:first-child {
+  box-shadow: 0px 0px 0px 2px var(--primary-bg), 0px 0px 0px 4px var(--success);
+}
+
+.Form > div .Tags span:last-child {
+  background-color: var(--danger);
+}
+.Form > div .Tags span.active:last-child {
+  box-shadow: 0px 0px 0px 2px var(--primary-bg), 0px 0px 0px 4px var(--danger);
+}

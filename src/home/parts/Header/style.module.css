@@ -1,0 +1,6 @@
+.Header {
+  padding-inline: var(--page-padding);
+  background: var(--secondary-bg);
+  line-height: 60px;
+  text-align: center;
+}

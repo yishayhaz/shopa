@@ -1,0 +1,11 @@
+.Container {
+  position: relative;
+  background: var(--primary-bg);
+  padding-inline: var(--page-padding);
+  padding-block: 30px 90px;
+  min-height: calc(100vh - 180px);
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
