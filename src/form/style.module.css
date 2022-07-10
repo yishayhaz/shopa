@@ -23,7 +23,7 @@
 
   height: 100%;
   width: calc(100vw - (var(--page-padding) * 2));
-  margin-left: var(--page-padding);
+  margin-inline: var(--page-padding);
 
   padding-block: 30px;
   display: flex;
@@ -74,30 +74,12 @@
 
 .Form > div .Tags {
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
 }
 .Form > div .Tags span {
   height: 35px;
   width: 35px;
   border-radius: 50%;
-  background-color: var(--medium);
   cursor: pointer;
-}
-.Form > div .Tags span.active {
-  box-shadow: 0px 0px 0px 2px var(--primary-bg), 0px 0px 0px 4px var(--medium);
-}
-
-.Form > div .Tags span:first-child {
-  background-color: var(--success);
-}
-.Form > div .Tags span:first-child:hover,
-.Form > div .Tags span.active:first-child {
-  box-shadow: 0px 0px 0px 2px var(--primary-bg), 0px 0px 0px 4px var(--success);
-}
-
-.Form > div .Tags span:last-child {
-  background-color: var(--danger);
-}
-.Form > div .Tags span.active:last-child {
-  box-shadow: 0px 0px 0px 2px var(--primary-bg), 0px 0px 0px 4px var(--danger);
 }

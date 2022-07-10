@@ -13,6 +13,7 @@
   height: 100%;
   width: calc(100vw - (var(--page-padding) * 2));
   margin-left: var(--page-padding);
+  margin-right: var(--page-padding);
 
   display: inline-flex;
   justify-content: space-evenly;
@@ -27,7 +28,6 @@
 }
 
 .Navbar > div button:nth-child(1) {
-  background-color: var(--danger);
   width: 25px;
   height: 25px;
   border-radius: 5px;
@@ -35,9 +35,21 @@
 .Navbar > div button:nth-child(1) svg {
   font-size: 15px;
 }
-.Navbar > div button:nth-child(1):hover {
+
+.Sort {
+  display: grid;
+  place-items: center;
+}
+.Sort svg path {
+  fill: var(--primary-bg);
+}
+.Trash:hover {
   box-shadow: 0 0 5px var(--danger);
 }
+.Trash {
+  background-color: var(--danger);
+}
+
 .Navbar > div button:nth-child(2) {
   background: var(--primary);
   height: 35px;
@@ -55,11 +67,4 @@
 }
 .Navbar > div button:nth-child(2) svg path {
   fill: var(--secondary-bg);
-}
-
-.show {
-  opacity: 1;
-}
-.hide {
-  opacity: 0;
 }

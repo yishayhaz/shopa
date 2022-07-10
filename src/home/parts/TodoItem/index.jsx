@@ -13,7 +13,7 @@ export default function TodoItem(props) {
   return (
     <label className={styles.Todo} htmlFor={props.id}>
       <h3>{props.children || ""}</h3>
-      <span className={styles[props.status || "success"]}></span>
+      <span className={props.status || "success"}></span>
       <input
         type="checkbox"
         checked={props.checked}

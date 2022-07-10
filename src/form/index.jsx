@@ -7,6 +7,8 @@ export default function Form({ status, close, refetchItems }) {
   const [tag, setTag] = useState(1);
   const [text, setText] = useState("");
 
+  const colors = ["danger", "medium", "success", "lightblue", "purple", "pink"];
+
   const submitForm = (shouldClose = true) => {
     if (!text) return;
 
@@ -54,18 +56,13 @@ export default function Form({ status, close, refetchItems }) {
           autoFocus
         />
         <div className={styles.Tags}>
-          <span
-            onClick={() => setTag(0)}
-            className={tag === 0 ? styles.active : ""}
-          ></span>
-          <span
-            onClick={() => setTag(1)}
-            className={tag === 1 ? styles.active : ""}
-          ></span>
-          <span
-            onClick={() => setTag(2)}
-            className={tag === 2 ? styles.active : ""}
-          ></span>
+          {colors.map((color, index) => (
+            <span
+              className={`${color} ${tag === index ? "active" : ""}`}
+              onClick={() => setTag(index)}
+              key={index}
+            ></span>
+          ))}
         </div>
         <div className={styles.Btns}>
           <button onClick={close}>

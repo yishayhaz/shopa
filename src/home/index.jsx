@@ -7,16 +7,28 @@ import styles from "./style.module.css";
 import { useQuery } from "react-query";
 import { GET, DELETE } from "../API";
 
+const colors = ["danger", "medium", "success", "lightblue", "purple", "pink"];
+
 export default function HomePage() {
+  const [List, setList] = useState([]);
   const [formStatus, setFormStatus] = useState("closed");
   const [completed, setCompleted] = useState([]);
   const [checkboxToClear, setCheckboxToClear] = useState(false);
+  const [filterIndex, setFilter] = useState(colors.length);
 
   const closeForm = () => setFormStatus("closed");
 
   const getShoppingList = () =>
     GET("/shopping-list").then((res) => res.data.list);
+
   const shoppingList = useQuery("shopping-list", getShoppingList);
+
+  const filterList = (list) =>
+    [...list].filter((item) => {
+      if (filterIndex === colors.length) return item;
+      if (item.priority === filterIndex) return item;
+      return null;
+    });
 
   const handleChange = (e) => {
     const { checked, id } = e.target;
@@ -57,17 +69,25 @@ export default function HomePage() {
     }
   };
 
+  const onSort = () => {
+    if (filterIndex < colors.length) {
+      setFilter(filterIndex + 1);
+    } else setFilter(0);
+
+    setCompleted([]);
+  };
+
   return (
-    <>
+    <div dir={localStorage.getItem("dir") || "ltr"}>
       <Header />
       <div className={styles.Container}>
         {shoppingList.data?.items?.length
-          ? shoppingList.data.items.map((item, index) => (
+          ? filterList(shoppingList.data.items).map((item, index) => (
               <TodoItem
                 key={index}
                 checked={completed.includes(item.id)}
                 onChange={handleChange}
-                status={["success", "medium", "danger"][item.priority]}
+                status={colors[item.priority]}
                 id={item.id}
               >
                 {item.name}
@@ -85,7 +105,9 @@ export default function HomePage() {
         handleAll={handleAll}
         checked={checkboxToClear}
         onDelete={handleDelete}
+        SortColor={colors[filterIndex] || "gay"}
+        onSort={onSort}
       />
-    </>
+    </div>
   );
 }

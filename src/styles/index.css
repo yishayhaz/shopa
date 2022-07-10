@@ -10,6 +10,9 @@
   --danger: hsl(3, 98%, 50%);
   --medium: hsl(33, 98%, 50%);
   --success: hsl(120, 98%, 50%);
+  --lightblue: hsl(180, 98%, 50%);
+  --purple: hsl(290, 98%, 50%);
+  --pink: hsl(332, 98%, 50%);
 
   --page-padding: max(5%, calc((100vw - 600px) / 2));
 }
@@ -20,6 +23,58 @@
   color: var(--primary-color);
 
   font-family: "Raleway", sans-serif;
+  /* direction: rtl; */
+}
+
+.danger {
+  background: var(--danger);
+}
+.medium {
+  background: var(--medium);
+}
+.success {
+  background: var(--success);
+}
+.lightblue {
+  background: var(--lightblue);
+}
+.purple {
+  background: var(--purple);
+}
+.pink {
+  background: var(--pink);
+}
+
+.active.danger {
+  box-shadow: 0px 0px 0px 2px var(--primary-bg), 0px 0px 0px 4px var(--danger);
+}
+.active.medium {
+  box-shadow: 0px 0px 0px 2px var(--primary-bg), 0px 0px 0px 4px var(--medium);
+}
+.active.success {
+  box-shadow: 0px 0px 0px 2px var(--primary-bg), 0px 0px 0px 4px var(--success);
+}
+.active.lightblue {
+  box-shadow: 0px 0px 0px 2px var(--primary-bg),
+    0px 0px 0px 4px var(--lightblue);
+}
+.active.purple {
+  box-shadow: 0px 0px 0px 2px var(--primary-bg), 0px 0px 0px 4px var(--purple);
+}
+.active.pink {
+  box-shadow: 0px 0px 0px 2px var(--primary-bg), 0px 0px 0px 4px var(--pink);
+}
+
+.gay {
+  background: linear-gradient(
+    to right,
+    var(--pink),
+    var(--danger),
+    var(--medium),
+    var(--success),
+    var(--lightblue),
+    var(--purple)
+  );
 }
 
 input[type="checkbox"] {

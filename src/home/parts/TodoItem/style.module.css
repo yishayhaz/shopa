@@ -25,15 +25,4 @@
   width: 30px;
   height: 10px;
   border-radius: 5px;
-  background: gray;
-}
-
-.Todo span.success {
-  background: var(--success);
-}
-.Todo span.danger {
-  background: var(--danger);
-}
-.Todo span.medium {
-  background: var(--medium);
 }
