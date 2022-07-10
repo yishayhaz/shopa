@@ -82,7 +82,7 @@ export default function HomePage() {
     if (!filterList(shoppingList.data.items).length) {
       nextFilter();
     }
-  }, [filterIndex]);
+  }, [filterIndex, shoppingList.data?.items]);
 
   return (
     <div dir={localStorage.getItem("dir") || "ltr"}>
