@@ -1,13 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./style.module.css";
 import { FiTrash2 } from "react-icons/fi";
 import { POST } from "../API";
 
-export default function Form({ status, close, refetchItems }) {
+export default function Form({
+  status,
+  close,
+  refetchItems,
+  defaultColorIndex,
+}) {
   const [tag, setTag] = useState(1);
   const [text, setText] = useState("");
 
   const colors = ["danger", "medium", "success", "lightblue", "purple", "pink"];
+
+  useEffect(() => {
+    setTag(colors[defaultColorIndex] ? defaultColorIndex : 1);
+  }, [defaultColorIndex]);
 
   const submitForm = (shouldClose = true) => {
     if (!text) return;

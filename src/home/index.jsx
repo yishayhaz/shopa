@@ -10,7 +10,6 @@ import { GET, DELETE } from "../API";
 const colors = ["danger", "medium", "success", "lightblue", "purple", "pink"];
 
 export default function HomePage() {
-  const [List, setList] = useState([]);
   const [formStatus, setFormStatus] = useState("closed");
   const [completed, setCompleted] = useState([]);
   const [checkboxToClear, setCheckboxToClear] = useState(false);
@@ -45,9 +44,9 @@ export default function HomePage() {
     }
   };
 
-  const handleAll = () => {
+  const handleMarkAll = () => {
     if (!completed.length) {
-      setCompleted(shoppingList.data.items.map((item) => item.id));
+      setCompleted(filterList(shoppingList.data.items).map((item) => item.id));
       setCheckboxToClear(true);
     } else {
       setCompleted([]);
@@ -69,13 +68,21 @@ export default function HomePage() {
     }
   };
 
-  const onSort = () => {
+  const nextFilter = () => {
     if (filterIndex < colors.length) {
       setFilter(filterIndex + 1);
     } else setFilter(0);
 
     setCompleted([]);
   };
+
+  useEffect(() => {
+    if (filterIndex === colors.length) return;
+
+    if (!filterList(shoppingList.data.items).length) {
+      nextFilter();
+    }
+  }, [filterIndex]);
 
   return (
     <div dir={localStorage.getItem("dir") || "ltr"}>
@@ -99,14 +106,15 @@ export default function HomePage() {
         status={formStatus}
         close={closeForm}
         refetchItems={shoppingList.refetch}
+        defaultColorIndex={filterIndex}
       />
       <BottomNavbar
         openForm={() => setFormStatus("open")}
-        handleAll={handleAll}
+        handleMarkAll={handleMarkAll}
         checked={checkboxToClear}
         onDelete={handleDelete}
         SortColor={colors[filterIndex] || "gay"}
-        onSort={onSort}
+        nextFilter={nextFilter}
       />
     </div>
   );

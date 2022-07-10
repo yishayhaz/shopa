@@ -6,11 +6,11 @@ import { FaSort } from "react-icons/fa";
 
 export default function BottomNavbar({
   openForm,
-  handleAll,
+  handleMarkAll,
   checked,
   onDelete,
   SortColor,
-  onSort,
+  nextFilter,
 }) {
   return (
     <div className={styles.Navbar}>
@@ -20,14 +20,17 @@ export default function BottomNavbar({
             <FiTrash2 />
           </button>
         ) : (
-          <button className={`${styles.Sort} ${SortColor}`} onClick={onSort}>
+          <button
+            className={`${styles.Sort} ${SortColor}`}
+            onClick={nextFilter}
+          >
             <FaSort />
           </button>
         )}
         <button onClick={openForm}>
           <BsPlusLg />
         </button>
-        <input type="checkbox" checked={checked} onChange={handleAll} />
+        <input type="checkbox" checked={checked} onChange={handleMarkAll} />
       </div>
     </div>
   );
