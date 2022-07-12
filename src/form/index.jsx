@@ -1,22 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "./style.module.css";
 import { FiTrash2 } from "react-icons/fi";
 import { POST } from "../API";
 
-export default function Form({
-  status,
-  close,
-  refetchItems,
-  defaultColorIndex,
-}) {
+export default function Form(props) {
+  const { status, close, refetchItems, defaultColorIndex } = props;
+
   const [tag, setTag] = useState(1);
   const [text, setText] = useState("");
+  const InputRef = useRef();
 
   const colors = ["danger", "medium", "success", "lightblue", "purple", "pink"];
 
   useEffect(() => {
     setTag(colors[defaultColorIndex] ? defaultColorIndex : 1);
   }, [defaultColorIndex]);
+
+  useEffect(() => {
+    InputRef.current.focus();
+  }, [props]);
 
   const submitForm = (shouldClose = true) => {
     if (!text) return;
@@ -30,7 +32,6 @@ export default function Form({
 
     PostDoc(doc);
 
-    setTag(1);
     setText("");
 
     if (shouldClose) {
@@ -62,7 +63,7 @@ export default function Form({
           value={text}
           onChange={(e) => setText(e.target.value)}
           onKeyDown={HandleKeyDown}
-          autoFocus
+          ref={InputRef}
         />
         <div className={styles.Tags}>
           {colors.map((color, index) => (

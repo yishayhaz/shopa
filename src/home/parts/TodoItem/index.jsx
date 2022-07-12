@@ -11,7 +11,11 @@ import styles from "./style.module.css";
 
 export default function TodoItem(props) {
   return (
-    <label className={styles.Todo} htmlFor={props.id}>
+    <label
+      className={styles.Todo}
+      data-checked={String(props.checked)}
+      htmlFor={props.id}
+    >
       <h3>{props.children || ""}</h3>
       <span className={props.status || "success"}></span>
       <input

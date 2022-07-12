@@ -5,6 +5,10 @@
   --secondary-bg: #24303c;
   --primary-color: #dddddd;
 
+  --primary-bg: #fff;
+  --secondary-bg: #ddd;
+  --primary-color: #00131a;
+
   --primary: #00a8e8;
 
   --danger: hsl(3, 98%, 50%);
@@ -46,23 +50,24 @@
 }
 
 .active.danger {
-  box-shadow: 0px 0px 0px 2px var(--primary-bg), 0px 0px 0px 4px var(--danger);
+  box-shadow: 0px 0px 0px 2px var(--secondary-bg), 0px 0px 0px 4px var(--danger);
 }
 .active.medium {
-  box-shadow: 0px 0px 0px 2px var(--primary-bg), 0px 0px 0px 4px var(--medium);
+  box-shadow: 0px 0px 0px 2px var(--secondary-bg), 0px 0px 0px 4px var(--medium);
 }
 .active.success {
-  box-shadow: 0px 0px 0px 2px var(--primary-bg), 0px 0px 0px 4px var(--success);
+  box-shadow: 0px 0px 0px 2px var(--secondary-bg),
+    0px 0px 0px 4px var(--success);
 }
 .active.lightblue {
-  box-shadow: 0px 0px 0px 2px var(--primary-bg),
+  box-shadow: 0px 0px 0px 2px var(--secondary-bg),
     0px 0px 0px 4px var(--lightblue);
 }
 .active.purple {
-  box-shadow: 0px 0px 0px 2px var(--primary-bg), 0px 0px 0px 4px var(--purple);
+  box-shadow: 0px 0px 0px 2px var(--secondary-bg), 0px 0px 0px 4px var(--purple);
 }
 .active.pink {
-  box-shadow: 0px 0px 0px 2px var(--primary-bg), 0px 0px 0px 4px var(--pink);
+  box-shadow: 0px 0px 0px 2px var(--secondary-bg), 0px 0px 0px 4px var(--pink);
 }
 
 .gay {

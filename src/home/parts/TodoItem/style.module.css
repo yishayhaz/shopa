@@ -11,6 +11,10 @@
   padding-inline: 15px;
 }
 
+.Todo[data-checked="true"] {
+  opacity: 0.2;
+}
+
 .Todo h3 {
   width: 75%;
   max-width: 75%;

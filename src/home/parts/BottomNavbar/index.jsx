@@ -4,14 +4,9 @@ import { BsPlusLg } from "react-icons/bs";
 import { FiTrash2 } from "react-icons/fi";
 import { FaSort } from "react-icons/fa";
 
-export default function BottomNavbar({
-  openForm,
-  handleMarkAll,
-  checked,
-  onDelete,
-  SortColor,
-  nextFilter,
-}) {
+export default function BottomNavbar(props) {
+  const { openForm, handleCheckAll, checked, onDelete, SortColor, setFilter } =
+    props;
   return (
     <div className={styles.Navbar}>
       <div>
@@ -22,7 +17,7 @@ export default function BottomNavbar({
         ) : (
           <button
             className={`${styles.Sort} ${SortColor}`}
-            onClick={nextFilter}
+            onClick={() => setFilter()}
           >
             <FaSort />
           </button>
@@ -30,7 +25,7 @@ export default function BottomNavbar({
         <button onClick={openForm}>
           <BsPlusLg />
         </button>
-        <input type="checkbox" checked={checked} onChange={handleMarkAll} />
+        <input type="checkbox" checked={checked} onChange={handleCheckAll} />
       </div>
     </div>
   );
