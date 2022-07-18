@@ -18,7 +18,7 @@ export default function Form(props) {
 
   useEffect(() => {
     InputRef.current.focus();
-  }, [props]);
+  }, [status]);
 
   const submitForm = (shouldClose = true) => {
     if (!text) return;
