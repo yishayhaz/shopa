@@ -6,7 +6,6 @@ import TodoItem from "./parts/TodoItem";
 import styles from "./style.module.css";
 import { useQuery } from "react-query";
 import { GET, DELETE } from "../API";
-import Hotkeys from "react-hot-keys";
 
 const colors = ["danger", "medium", "success", "lightblue", "purple", "pink"];
 
@@ -24,7 +23,7 @@ export default function HomePage() {
 
   const shoppingList = useQuery("shopping-list", getShoppingList);
 
-  const getFilteredList = (list, index) =>
+  const getFilteredList = (list = [], index) =>
     [...list].filter((item) => {
       if (index === colors.length) return item;
       if (item.priority === index) return item;
@@ -74,8 +73,8 @@ export default function HomePage() {
     }
   };
 
-  const handleSetFilter = (action = 1, prvNum) => {
-    let newFilterIndex = prvNum || filterIndex;
+  const handleSetFilter = (action = 1, newFilterIndex) => {
+    newFilterIndex = newFilterIndex ?? filterIndex;
 
     if (action === 1) {
       if (newFilterIndex < colors.length) {
@@ -91,9 +90,9 @@ export default function HomePage() {
       newFilterIndex === colors.length ||
       getFilteredList(shoppingList.data.items, newFilterIndex).length
     ) {
-      setFilterIndex(newFilterIndex);
+      return setFilterIndex(newFilterIndex);
     } else {
-      handleSetFilter(action, newFilterIndex);
+      return handleSetFilter(action, newFilterIndex);
     }
   };
 
